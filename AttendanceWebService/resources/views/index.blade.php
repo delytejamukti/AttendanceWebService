@@ -11,7 +11,7 @@
         <div class="content content-top content-full text-center">
             <div class="py-20">
                 <h1 class="h2 font-w700 text-white mb-10">Attendance Web Service</h1>
-                <h2 class="h4 font-w400 text-white-op mb-0">Online Web Based Attandance Management</h2>
+                <h2 class="h4 font-w400 text-white-op mb-0">Online Web Based Attendance Management</h2>
             </div>
         </div>
     </div>
