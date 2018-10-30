@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'mata-kuliah'], function(){
     Route::get('/', 'MKController@home');
 });
+
+Route::group(['prefix' => 'jadwal'], function(){
+    Route::get('/', 'JadwalController@home');
+});

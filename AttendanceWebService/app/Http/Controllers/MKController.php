@@ -9,6 +9,6 @@ class MKController extends Controller
 {
     public function home() {
         $rows = MataKuliah::all();
-        return view('matakuliah.home', compact('rows'));
+        return view('pages.matakuliah.home', compact('rows'));
     }
 }
