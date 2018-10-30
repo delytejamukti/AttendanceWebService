@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJadwalsTable extends Migration
+class CreateMahasiswasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateJadwalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwals', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('dosen_nip');
-            $table->string('mk_kode');
-            $table->string('hari');
-            $table->integer('tahun_ajaran');
+        Schema::create('mahasiswas', function (Blueprint $table) {
+            $table->string('nrp')->unique();
+            $table->string('nama_mhs');
+            $table->integer('angkatan');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateJadwalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwals');
+        Schema::dropIfExists('mahasiswas');
     }
 }
