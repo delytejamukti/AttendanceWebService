@@ -21,7 +21,7 @@ class JadwalSeeder extends Seeder
                 'tahun_ajaran' => 2018
             ),
             array (
-                'dosen_nip' => "05111540000051",
+                'dosen_nip' => "197205281997021001",
                 'mk_kode' => 'IF184802',
                 'hari' => 'Selasa',
                 'tahun_ajaran' => 2018
