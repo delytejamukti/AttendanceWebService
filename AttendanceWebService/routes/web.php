@@ -15,3 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::group(['prefix' => 'mata-kuliah'], function(){
+    Route::get('/', 'MKController@home');
+});
