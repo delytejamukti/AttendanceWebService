@@ -5,6 +5,7 @@
 @endsection
 
 @section('contents')
+    <h2>Mata Kuliah</h2>
     <table border="1">
         <thead>
             <tr>
