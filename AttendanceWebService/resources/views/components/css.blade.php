@@ -1,2 +1,2 @@
-<link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
+<link rel="stylesheet" id="css-main" href="{{asset('assets/css/codebase.css')}}">
 @yield('custom-css')

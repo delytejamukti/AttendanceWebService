@@ -40,7 +40,7 @@
         </a>
     </div>
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" href="">
+        <a class="block block-transparent" href="/mata-kuliah">
             <div class="block-content block-content-full bg-elegance text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-book text-elegance-lighter"></i>
@@ -50,7 +50,7 @@
         </a>
     </div>
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" href="">
+        <a class="block block-transparent" href="/jadwal">
             <div class="block-content block-content-full bg-elegance text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-calendar text-elegance-lighter"></i>

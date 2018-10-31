@@ -35,10 +35,10 @@
                                 <a href=""><i class="fa fa-users"></i>Mahasiswa</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-book"></i>Mata Kuliah</a>
+                                <a href="/mata-kuliah"><i class="fa fa-book"></i>Mata Kuliah</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-calendar"></i>Jadwal</a>
+                                <a href="/jadwal"><i class="fa fa-calendar"></i>Jadwal</a>
                             </li>
                             <li>
                                 <a href=""><i class="fa fa-list"></i>Ambil Kuliah</a>
