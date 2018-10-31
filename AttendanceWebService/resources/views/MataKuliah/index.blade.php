@@ -24,13 +24,13 @@
                 <td>{{$row->kode_mk}}</td>
                 <td>{{$row->nama_mk}}</td>
                 <td>
-                <a href="/mata-kuliah/edit/{{$row->kode_mk}}">
-                    <button>edit</button>
-                </a>
-                <a href="/delete/{{$row->kode_mk}}">
-                    <button>hapus</button>
-                </a>
-            </td>
+                    {{ Form::open(['route' => ['matakuliah.delete', $row->kode_mk], 'method' => 'delete']) }}
+                        <a href="/mata-kuliah/edit/{{$row->kode_mk}}">
+                            <button type="button">edit</button>
+                        </a>
+                        <button type="submit">hapus</button>
+                    {{ Form::close() }}
+                </td>
             </tr>
             @endforeach
         </tbody>
