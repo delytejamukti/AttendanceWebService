@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'mata-kuliah'], function(){
     Route::get('/', 'MKController@home');
+    Route::get('/create', 'MKController@create');
+    Route::post('/create/submit','MKController@create_submit');
+    Route::get('/edit/{id}', 'MKController@edit');
+    Route::put('/edit/submit','MKController@edit_submit');
+    Route::get('/delete/{id}', 'MKController@delete')->name('supplier.delete');
 });
 
 Route::group(['prefix' => 'jadwal'], function(){

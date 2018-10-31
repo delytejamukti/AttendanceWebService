@@ -6,6 +6,8 @@
 
 @section('contents')
     <h2>Jadwal Kuliah</h2>
+    <button>tambah</button>
+    <br></br>
     <table border="1">
         <thead>
             <tr>
@@ -13,6 +15,7 @@
                 <th>Kode Mata Kuliah</th>
                 <th>Hari</th>
                 <th>Tahun Ajaran</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +25,10 @@
                 <td>{{$row->mk_kode}}</td>
                 <td>{{$row->hari}}</td>
                 <td>{{$row->tahun_ajaran}}</td>
+                <td>
+                    <button>edit</button>
+                    <button>hapus</button>
+                </td>
             </tr>
             @endforeach
         </tbody>
