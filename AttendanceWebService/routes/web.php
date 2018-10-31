@@ -15,3 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::group(['prefix' => 'ambil_kuliah'], function(){
+	Route::get('/', 'AmbilKuliahController@index');
+	Route::post('/peserta', 'AmbilKuliahController@peserta');
+});
