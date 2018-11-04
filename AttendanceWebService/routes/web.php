@@ -17,5 +17,11 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'ambil_kuliah'], function(){
 	Route::get('/', 'AmbilKuliahController@index');
-	Route::post('/peserta', 'AmbilKuliahController@peserta');
+
+	Route::group(['prefix' => 'peserta'], function(){
+		Route::post('/', 'AmbilKuliahController@peserta');
+		Route::post('/angkatan', 'AmbilKuliahController@angkatan');
+		Route::post('/delete', 'AmbilKuliahController@delete');
+		Route::post('/tambah', 'AmbilKuliahController@tambah');
+	});
 });
