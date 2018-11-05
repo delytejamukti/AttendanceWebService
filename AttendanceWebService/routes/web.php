@@ -26,4 +26,13 @@ Route::group(['prefix' => 'mata-kuliah'], function(){
 
 Route::group(['prefix' => 'jadwal'], function(){
     Route::get('/', 'JadwalController@home');
+Route::group(['prefix' => 'ambil_kuliah'], function(){
+	Route::get('/', 'AmbilKuliahController@index');
+
+	Route::group(['prefix' => 'peserta'], function(){
+		Route::post('/', 'AmbilKuliahController@peserta');
+		Route::post('/angkatan', 'AmbilKuliahController@angkatan');
+		Route::post('/delete', 'AmbilKuliahController@delete');
+		Route::post('/tambah', 'AmbilKuliahController@tambah');
+	});
 });
