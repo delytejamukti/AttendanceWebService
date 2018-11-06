@@ -70,7 +70,7 @@
         </a>
     </div>
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" href="">
+        <a class="block block-transparent" href="ambil_kuliah">
             <div class="block-content block-content-full bg-danger text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-check text-danger-light"></i>
