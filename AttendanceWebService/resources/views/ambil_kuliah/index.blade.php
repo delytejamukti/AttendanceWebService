@@ -1,3 +1,11 @@
+@extends('layouts.main')
+
+@section('title')
+    Ambil Kuliah
+@endsection
+
+@section('contents')
+
 <table>
 	<tr>
 		<th>No.</th>
@@ -24,3 +32,5 @@
 	</tr>
 	@endforeach
 </table>
+
+@endsection
