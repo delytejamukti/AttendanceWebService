@@ -15,4 +15,5 @@ class Dosen extends Model
     	return $this->hasMany('App\Jadwal');
     }
 
+
 }
