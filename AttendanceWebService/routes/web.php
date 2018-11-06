@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/mahasiswa', 'MahasiswaController@read');
+Route::get('/mahasiswa/create', 'MahasiswaController@create');
+Route::post('/mahasiswa/store', 'MahasiswaController@store');
+Route::get('/mahasiswa/{nrp}/edit', 'MahasiswaController@edit');
+Route::post('/mahasiswa/{nrp}', 'MahasiswaController@update');
+Route::get('/mahasiswa/delete/{nrp}', 'MahasiswaController@destroy');
+
+Route::get('/dosen', 'DosenController@read');
+Route::get('/dosen/create', 'DosenController@create');
+Route::post('/dosen/store', 'DosenController@store');
+Route::get('/dosen/{nip}/edit', 'DosenController@edit');
+Route::post('/dosen/{nip}', 'DosenController@update');
+Route::get('/dosen/delete/{nip}', 'DosenController@destroy');
+
 Route::group(['prefix' => 'mata-kuliah'], function(){
     Route::get('/', 'MKController@home');
     Route::get('/create', 'MKController@create');
@@ -26,11 +40,11 @@ Route::group(['prefix' => 'mata-kuliah'], function(){
 
 Route::group(['prefix' => 'jadwal'], function(){
     Route::get('/', 'JadwalController@home');
+
 });
 
 Route::group(['prefix' => 'ambil_kuliah'], function(){
     Route::get('/', 'AmbilKuliahController@index');
-
     Route::group(['prefix' => 'peserta'], function(){
         Route::post('/', 'AmbilKuliahController@peserta');
         Route::post('/angkatan', 'AmbilKuliahController@angkatan');
@@ -38,3 +52,4 @@ Route::group(['prefix' => 'ambil_kuliah'], function(){
         Route::post('/tambah', 'AmbilKuliahController@tambah');
     });
 });
+
