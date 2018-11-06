@@ -18,7 +18,6 @@
 			<tbody>
 				@foreach($mhs as $key => $mhs)
 				<tr>
-				<!-- <td></td> -->
 					<td>{{ $key+1}}</td>
 					<td> {{ $mhs -> nrp}}</td>
 					<td> {{ $mhs -> nama_mhs}}</td>
