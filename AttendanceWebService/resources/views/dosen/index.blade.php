@@ -13,6 +13,7 @@
 					<th>NRP</th>
 					<th>Nama Mahasiswa</th>
 					<th>action</th>
+					<!-- <th></th> -->
 				</tr>
 			</thead>
 			<tbody>
