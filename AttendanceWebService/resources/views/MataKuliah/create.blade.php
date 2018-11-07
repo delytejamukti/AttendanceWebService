@@ -1,32 +1,41 @@
 @extends('layouts.main')
 
 @section('title')
-    Mata Kuliah
+    Mata Kuliah - Menambah Mata Kuliah
 @endsection
 
 @section('contents')
-    <h2>Tambah Mata Kuliah</h2>
-    <div>
-        {!! Form::open(['action' => 'MKController@create_submit', 'method'=>'POST']) !!}
-    
-        <table>
-                <tr>
-                    <td>
-                        {{Form::label('kode_mk','Kode Mata Kuliah')}}
-                    </td>
-                    <td>
-                        {{Form::text('kode_mk', '')}}
-                    </td>
-                </tr>            
-                <tr>
-                    <td>
-                        {{Form::label('nama_mk','Nama Mata Kuliah')}}
-                    </td>
-                    <td>
-                        {{Form::text('nama_mk', '')}}
-                    </td>
-                </tr>
-            </table>
-        {!! Form::submit('Simpan') !!}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-center">Menambah Jadwal</h1>
+                <hr class="col-md-12">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #013880;color: white;">
+                <i class="fa fa-user fa-fw"></i><b>Tambah Jadwal</b>
+            </div>
+            <div class="panel-body border border-primary">
+                {!! Form::open(['action' => 'MKController@create_submit', 'method'=>'POST']) !!}
+                <div class="form-group">
+                    {{Form::label('kode_mk','Kode Mata Kuliah', ['class' => 'control-label col-sm-2'])}}
+                    <div class="col-sm-10">
+                        {{Form::text('kode_mk', '', ['class' => 'form-control'])}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{Form::label('nama_mk','Nama Mata Kuliah', ['class' => 'control-label col-sm-2'])}}
+                    <div class="col-sm-10">
+                        {{Form::text('nama_mk', '', ['class' => 'form-control'])}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

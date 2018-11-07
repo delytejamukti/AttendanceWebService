@@ -35,7 +35,7 @@ Route::get('/dosen/delete/{nip}', 'DosenController@destroy');
 
 Route::group(['prefix' => 'mata-kuliah'], function(){
     Route::get('/', 'MKController@index')->name('mk');
-    Route::get('/create', 'MKController@create');
+    Route::get('/create', 'MKController@create')->name('mk.add');
     Route::post('/create/submit','MKController@create_submit');
     Route::get('/edit/{id}', 'MKController@edit');
     Route::put('/edit/submit','MKController@edit_submit');
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'mata-kuliah'], function(){
 
 Route::group(['prefix' => 'jadwal'], function(){
     Route::get('/', 'JadwalController@index')->name('jadwal');
-    Route::get('/create', 'JadwalController@create');
+    Route::get('/create', 'JadwalController@create')->name('jadwal.add');
     Route::post('/create/submit','JadwalController@create_submit');
     Route::get('/edit/{id}', 'JadwalController@edit');
     Route::put('/edit/submit','JadwalController@edit_submit');
