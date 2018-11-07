@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kehadiran;
+use Carbon\Carbon;
 
 class KehadiranController extends Controller
 {
@@ -13,6 +15,7 @@ class KehadiranController extends Controller
 
     public function index()
     {
-    	return view('Kehadiran.index');
+    	$kehadiran=Kehadiran::where("tanggal","<=",Carbon::now())->get();
+    	return view('Kehadiran.index',compact('kehadiran'));
     }
 }

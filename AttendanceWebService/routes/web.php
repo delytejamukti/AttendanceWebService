@@ -15,11 +15,9 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/index', function () {
-    return view('index');
-});
 
 Route::get('/mahasiswa', 'MahasiswaController@read')->name('mhs');
+Route::get('/mahasiswa/search', 'MahasiswaController@search');
 Route::get('/mahasiswa/create', 'MahasiswaController@create');
 Route::post('/mahasiswa/store', 'MahasiswaController@store');
 Route::get('/mahasiswa/{nrp}/edit', 'MahasiswaController@edit');
@@ -35,6 +33,7 @@ Route::get('/dosen/delete/{nip}', 'DosenController@destroy');
 
 Route::group(['prefix' => 'mata-kuliah'], function(){
     Route::get('/', 'MKController@index')->name('mk');
+    Route::get('/search','MKController@searching');
     Route::get('/create', 'MKController@create');
     Route::post('/create/submit','MKController@create_submit');
     Route::get('/edit/{id}', 'MKController@edit');
