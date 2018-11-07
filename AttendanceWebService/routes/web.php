@@ -24,7 +24,7 @@ Route::post('/mahasiswa/{nrp}', 'MahasiswaController@update');
 Route::get('/mahasiswa/delete/{nrp}', 'MahasiswaController@destroy');
 
 Route::get('/dosen', 'DosenController@read')->name('dosen');
-Route::get('/dosen/create', 'DosenController@create');
+Route::get('/dosen/create', 'DosenController@create')->name('dosen.add');
 Route::post('/dosen/store', 'DosenController@store');
 Route::get('/dosen/{nip}/edit', 'DosenController@edit');
 Route::post('/dosen/{nip}', 'DosenController@update');
