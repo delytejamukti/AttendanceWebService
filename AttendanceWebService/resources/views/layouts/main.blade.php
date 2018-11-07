@@ -30,7 +30,8 @@
         <!-- Codebase framework -->
         @include('components.css')
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
@@ -208,10 +209,10 @@
 
         <!-- Codebase Core JS -->
         @include('components.js')
-
+        
         <!-- Page JS Plugins -->
         <script src="assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
-
+        @yield('moreJS')
         <!-- Page JS Code -->
         <script src="assets/js/pages/be_pages_dashboard.js"></script>
     </body>
