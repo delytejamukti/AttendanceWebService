@@ -61,7 +61,13 @@ Route::group(['prefix' => 'ambil_kuliah'], function(){
     });
 });
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/kehadiran','KehadiranController@index');
+});
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/gpassword',function(){
+    return bcrypt('123');
+});
