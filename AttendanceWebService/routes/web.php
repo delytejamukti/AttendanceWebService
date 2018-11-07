@@ -15,6 +15,9 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/index', function () {
+    return view('index');
+});
 
 Route::get('/mahasiswa', 'MahasiswaController@read')->name('mhs');
 Route::get('/mahasiswa/create', 'MahasiswaController@create');
