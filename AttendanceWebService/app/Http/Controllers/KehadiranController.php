@@ -18,4 +18,10 @@ class KehadiranController extends Controller
     	$kehadiran=Kehadiran::where("tanggal","<=",Carbon::now())->get();
     	return view('Kehadiran.index',compact('kehadiran'));
     }
+
+    public function create(Request $request)
+    {
+
+    	return back();
+    }
 }
