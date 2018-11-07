@@ -1,3 +1,56 @@
+@extends('layouts.main')
+
+@section('title')
+    Ambil Kuliah
+@endsection
+
+@section('contents')
+
+<table id="list">
+<thead>
+	<tr>
+		<th>No.</th>
+		<th>Mata Kuliah</th>
+		<th>Dosen Pengajar</th>
+		<th>Hari</th>
+		<th>Tahun Ajaran</th>
+		<th>Aksi</th>
+	</tr>
+</thead>
+<tbody>
+	@foreach($j as $p)
+	<tr>
+		<td>{{$c++}}</td>
+		<td>{{$p->nama_mk}}</td>
+		<td>{{$p->nama_dosen}}</td>
+		<td>{{$p->hari}}</td>
+		<td><center>{{$p->tahun_ajaran}}</center></td>
+		<td>
+			{!! Form::open(['action' => 'AmbilKuliahController@peserta', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
+			<input type="hidden" name="nama_mk" value="{{$p->nama_mk}}">
+			<input type="hidden" name="jadwal" value="{{$p->id}}">	
+			<center>{!! Form::submit('Peserta',['class' => 'btn btn-primary']) !!}</center>
+			{!! Form::close() !!}
+		</td>
+	</tr>
+	@endforeach
+</tbody>
+</table>
+
+@endsection
+
+@section('moreJS')
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $('#list').DataTable({
+                "autoWidth": true,
+                "ordering": false,
+            });
+        });
+    </script>
+@endsection
+
 <style>
 #list {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -22,40 +75,3 @@
     color: white;
 }
 </style>
-
-@extends('layouts.main')
-
-@section('title')
-    Ambil Kuliah
-@endsection
-
-@section('contents')
-
-<table id="list">
-	<tr>
-		<th>No.</th>
-		<th>Mata Kuliah</th>
-		<th>Dosen Pengajar</th>
-		<th>Hari</th>
-		<th>Tahun Ajaran</th>
-		<th>Aksi</th>
-	</tr>
-	@foreach($j as $p)
-	<tr>
-		<td>{{$c++}}</td>
-		<td>{{$p->nama_mk}}</td>
-		<td>{{$p->nama_dosen}}</td>
-		<td>{{$p->hari}}</td>
-		<td><center>{{$p->tahun_ajaran}}</center></td>
-		<td>
-			{!! Form::open(['action' => 'AmbilKuliahController@peserta', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
-			<input type="hidden" name="nama_mk" value="{{$p->nama_mk}}">
-			<input type="hidden" name="jadwal" value="{{$p->id}}">	
-			<center>{!! Form::submit('Peserta',['class' => 'btn btn-primary']) !!}</center>
-			{!! Form::close() !!}
-		</td>
-	</tr>
-	@endforeach
-</table>
-
-@endsection

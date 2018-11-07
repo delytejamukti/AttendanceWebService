@@ -1,3 +1,55 @@
+@extends('layouts.main')
+
+@section('title')
+    Ambil Kuliah
+@endsection
+
+@section('contents')
+
+<strong style="font-size: 14pt"><center>Angkatan {{$angkatan}}</center></strong>
+<table id="list">
+<thead>
+	<tr>
+		<th>No.</th>
+		<th>NRP</th>
+		<th>Nama</th>
+		<th>Angkatan</th>
+		<th>Aksi</th>
+	</tr>
+</thead>
+<tbody>
+	@foreach($mhs as $p)
+	<tr>
+		<td>{{$c++}}</td>
+		<td>{{$p->nrp}}</td>
+		<td>{{$p->nama_mhs}}</td>
+		<td>{{$p->angkatan}}</td>
+		<td>
+			{!! Form::open(['action' => 'AmbilKuliahController@tambah', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
+			<input type="hidden" name="mhs_nrp" value="{{$p->nrp}}">
+			<input type="hidden" name="jadwal" value="{{$jadwal}}">
+			<center>{!! Form::submit('Tambah',['class' => 'btn btn-primary']) !!}</center>
+			{!! Form::close() !!}
+		</td>
+	</tr>
+	@endforeach
+</tbody>
+</table>
+
+@endsection
+
+@section('moreJS')
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $('table').DataTable({
+                "autoWidth": true,
+                "ordering": false,
+            });
+        });
+    </script>
+@endsection
+
 <style>
 #list {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -23,38 +75,3 @@
 }
 </style>
 
-@extends('layouts.main')
-
-@section('title')
-    Ambil Kuliah
-@endsection
-
-@section('contents')
-
-Angkatan {{$angkatan}}
-<table id="list">
-	<tr>
-		<th>No.</th>
-		<th>NRP</th>
-		<th>Nama</th>
-		<th>Angkatan</th>
-		<th>Aksi</th>
-	</tr>
-	@foreach($mhs as $p)
-	<tr>
-		<td>{{$c++}}</td>
-		<td>{{$p->nrp}}</td>
-		<td>{{$p->nama_mhs}}</td>
-		<td>{{$p->angkatan}}</td>
-		<td>
-			{!! Form::open(['action' => 'AmbilKuliahController@tambah', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
-			<input type="hidden" name="mhs_nrp" value="{{$p->nrp}}">
-			<input type="hidden" name="jadwal" value="{{$jadwal}}">
-			<center>{!! Form::submit('Tambah',['class' => 'btn btn-primary']) !!}</center>
-			{!! Form::close() !!}
-		</td>
-	</tr>
-	@endforeach
-</table>
-
-@endsection

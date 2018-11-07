@@ -6,7 +6,7 @@
 
 @section('contents')
 
-<div class="bg-image my-20" style="background-image: url('assets/img/photos/photo26@2x.jpg');">
+<div class="bg-image my-20" style="background-image: url('assets/img/photos/informatika.png');">
     <div class="bg-black-op-75">
         <div class="content content-top content-full text-center">
             <div class="py-20">
