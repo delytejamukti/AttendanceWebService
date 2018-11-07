@@ -28,7 +28,7 @@
 						<tr>
 							<th>#</th>
 							<th>NRP</th>
-							<th>Nama Mahasiswa</th>
+							<th>Nama Dosen</th>
 							<th>action</th>
 						</tr>
 					</thead>
