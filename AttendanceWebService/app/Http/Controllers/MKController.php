@@ -8,6 +8,10 @@ use DB;
 
 class MKController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $rows = MataKuliah::all();
         return view('MataKuliah.index', compact('rows'));

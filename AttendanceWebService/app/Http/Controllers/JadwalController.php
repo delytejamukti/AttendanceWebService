@@ -10,6 +10,10 @@ use DB;
 
 class JadwalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         // $rows = Jadwal::all();
         $rows = DB::table('jadwals')

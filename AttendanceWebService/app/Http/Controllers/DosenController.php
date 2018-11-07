@@ -7,7 +7,10 @@ use App\Dosen;
 
 class DosenController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function read()
     {
     	$dosen = Dosen::all();

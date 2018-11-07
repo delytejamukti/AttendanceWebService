@@ -8,6 +8,10 @@ use DB;
 
 class AmbilKuliahController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
     	$data['j'] = DB::table('jadwals')
     				->join('dosens', 'dosen_nip', '=', 'nip')
