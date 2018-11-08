@@ -5,10 +5,10 @@
 @endsection
 
 @section('contents')
-    <h2>Tambah Kehadiran Kelasx</h2>
+    <h2>Tambah Kehadiran Kelas</h2>
     <form method="POST" action="{{url('/kehadiran/create')}}">
         {{csrf_field()}}
-        <h3 class="block-title">Caris Jadwal</h3>
+        <h3 class="block-title">Cari Jadwal</h3>
         <select class="js-mk form-control" style="width: 92%;" name="mk" data-placeholder="Cari Jadwal" required>
             {{-- @foreach ($ambilMK as $mk)
                 @php
