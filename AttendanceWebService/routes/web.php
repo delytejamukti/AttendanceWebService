@@ -20,7 +20,7 @@ Route::get('/index', function () {
 });
 
 Route::get('/mahasiswa', 'MahasiswaController@read')->name('mhs');
-Route::get('/mahasiswa/create', 'MahasiswaController@create');
+Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.add');
 Route::post('/mahasiswa/store', 'MahasiswaController@store');
 Route::get('/mahasiswa/{nrp}/edit', 'MahasiswaController@edit');
 Route::post('/mahasiswa/{nrp}', 'MahasiswaController@update');
