@@ -24,4 +24,22 @@ class KehadiranController extends Controller
 
     	return back();
     }
+
+    public function edit($id)
+    {
+    	$kehadiran=Kehadiran::find($id);
+    	if($kehadiran!=null)
+    	{
+    		if($kehadiran->hadir==0)
+    		{
+    			$kehadiran->hadir=1;
+    		}
+    		else
+    		{
+    			$kehadiran->hadir=0;
+    		}
+    		$kehadiran->save();
+    	}
+    	return redirect('/kehadiran');
+    }
 }

@@ -69,9 +69,9 @@
 						<td>{{$hadir->tanggal}}</td>
 						<td>
 							@if($hadir->hadir==0)
-								Absen
+								<span class="btn-danger">Absen</span>
 							@else
-								Masuk
+								<span class="btn-success">Masuk</span>
 							@endif
 						</td>
 						<td>{{$hadir->pertemuan_ke}}</td>
@@ -83,11 +83,7 @@
 							@endif
 						</td>
 						<td>
-							@if($hadir->hadir==0)
-								<button class="btn btn-info">Edit Status</button>
-							@else
-								<button class="btn btn-info">Edit Status</button>
-							@endif
+							<a href="{{url('/kehadiran/edit/'.$hadir->id)}}">	<button class="btn btn-primary">Edit Status</button></a>
 						</td>
 					</tr>
 				@endforeach
