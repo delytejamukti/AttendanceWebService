@@ -27,6 +27,20 @@ class KehadiranController extends Controller
 
     public function edit($id)
     {
+        $kehadiran=Kehadiran::find($id);
+        return view('Kehadiran.edit',compact('kehadiran'));
+    }
+
+    public function edit_submit(Request $request)
+    {
+        Kehadiran::whereId($request->id)->update([
+            'catatan' => $request->catatan
+        ]);
+        return redirect()->action('KehadiranController@index');
+    }
+
+    public function kehadiran($id)
+    {
     	$kehadiran=Kehadiran::find($id);
     	if($kehadiran!=null)
     	{

@@ -64,6 +64,8 @@ Route::group(['prefix'=> 'kehadiran','middleware' => ['auth']], function () {
     Route::get('/','KehadiranController@index');
     Route::post('/create', 'KehadiranController@create');
     Route::get('/edit/{id}','KehadiranController@edit');
+    Route::post('/edit/submit', 'KehadiranController@edit_submit');
+    Route::get('/edit/kehadiran/{id}','KehadiranController@kehadiran');
 });
 
 
