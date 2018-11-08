@@ -61,7 +61,11 @@ Route::group(['prefix' => 'ambil_kuliah'], function(){
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/kehadiran','KehadiranController@index');
+    //Route::get('/kehadiran','KehadiranController@index');
+    Route::group(['prefix' => 'kehadiran'], function(){
+        Route::get('/','KehadiranController@index');
+        Route::get('/edit/{id}','KehadiranController@edit');
+    });
 });
 
 
