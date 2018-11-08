@@ -19,6 +19,12 @@ class KehadiranController extends Controller
     	return view('Kehadiran.index',compact('kehadiran'));
     }
 
+    public function create(Request $request)
+    {
+
+    	return back();
+    }
+
     public function edit($id)
     {
     	$kehadiran=Kehadiran::find($id);
