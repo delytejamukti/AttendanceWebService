@@ -5,32 +5,28 @@
 @endsection
 
 @section('contents')
-    <h2>Tambah Kehadiran Kelas</h2>
+    <h2>Tambah Kehadiran Kelasx</h2>
     <form method="POST" action="{{url('/kehadiran/create')}}">
         {{csrf_field()}}
-        @php
-            $ambilMK = \App\AmbilKuliah::all();
-        @endphp
-        <h3 class="block-title">Cari Jadwal</h3>
-        <select class="js-mk form-control" style="width: 92%;" name="mk" data-placeholder="Cari Jadwal">
-            @foreach ($ambilMK as $mk)
+        <h3 class="block-title">Caris Jadwal</h3>
+        <select class="js-mk form-control" style="width: 92%;" name="mk" data-placeholder="Cari Jadwal" required>
+            {{-- @foreach ($ambilMK as $mk)
                 @php
                     $mhs=App\Mahasiswa::where('nrp',$mk->nrp)->first();
                     $jadwal=App\Jadwal::find($mk->jadwal_id);
                     $mk=App\MataKuliah::where('kode_mk',$jadwal->mk_kode)->first();
                 @endphp
                 <option name="ambilmk" value="{{$mk->id}}">{{$mhs->nrp}} | {{$mhs->nama_mhs}} | {{$mk->nama_mk}}</option>
-            @endforeach
+            @endforeach --}}
         </select>
-        {{Form::label('hari','Hari')}}
-        {{Form::text('hari', '')}}
-
-        {{Form::label('tahun_ajaran','Tahun Ajaran')}}
-        {{Form::text('tahun_ajaran', '')}}
+        <h3 class="block-title">Tanggal Jadwal</h3>
+        <input type="date" name="tanggal" required class="form-control" required>
+        <h3 class="block-title">Pertemuan Ke-</h3>
+        <input type="number" name="pertemuan" required class="form-control" min="1" max="16" required>
         <br>
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
-
+    <br>
 	<table id="list">
 		<thead>
 			<tr>
@@ -41,7 +37,7 @@
 				<th>Tanggal</th>
 				<th>Kehadiran</th>
 				<th>Pertemuan ke-</th>
-				<th>Status Kelas</th>
+				<th>Status Kelsas</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -91,14 +87,53 @@
 	</table>
 @endsection
 @section('moreJS')
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
-<script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+	<script>
         $(document).ready(function(){
             $('#list').DataTable({
                 "autoWidth": true,
                 "ordering": false,
             });
         });
+        $(document).ready(function() {
+		    $('.js-mk').select2({
+                ajax: {
+                    url: '{!! url('/mata-kuliah/search') !!}',
+                    dataType: 'json',
+                    delay: 300,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.kode_mk+"-"+item.nama_mk+" "+item.hari,
+                                    id: item.id_jadwal
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+            	}
+            });
+		    $('.js-mahasiswa').select2({
+                ajax: {
+                    url: '{!! url('/mahasiswa/search') !!}',
+                    dataType: 'json',
+                    delay: 300,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.nrp+"-"+item.nama_mhs,
+                                    id: item.nrp
+                                }
+                            })
+                        };
+                    }
+            	}
+            });
+		});
     </script>
 @endsection
 <style>

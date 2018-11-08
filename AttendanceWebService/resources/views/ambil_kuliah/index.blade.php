@@ -109,52 +109,52 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
 	<script>
-	        $(document).ready(function(){
-	            $('#list').DataTable({
-	                "autoWidth": true,
-	                "ordering": false,
-	            });
-	        });
-	        $(document).ready(function() {
-			    $('.js-mk').select2({
-	                ajax: {
-	                    url: '{!! url('/mata-kuliah/search') !!}',
-	                    dataType: 'json',
-	                    delay: 300,
-	                    processResults: function (data) {
-	                        return {
-	                            results: $.map(data, function (item) {
-	                                return {
-	                                    text: item.kode_mk+"-"+item.nama_mk+" "+item.hari,
-	                                    id: item.id_jadwal
-	                                }
-	                            })
-	                        };
-	                    },
-	                    cache: true
-                	}
-                });
-			    $('.js-mahasiswa').select2({
-	                ajax: {
-	                    url: '{!! url('/mahasiswa/search') !!}',
-	                    dataType: 'json',
-	                    delay: 300,
-	                    processResults: function (data) {
-	                        return {
-	                            results: $.map(data, function (item) {
-	                                return {
-	                                    text: item.nrp+"-"+item.nama_mhs,
-	                                    id: item.nrp
-	                                }
-	                            })
-	                        };
-	                    },
-	                    cache: true
-                	}
-                });
-			});
-	    </script>
-	@endsection
+        $(document).ready(function(){
+            $('#list').DataTable({
+                "autoWidth": true,
+                "ordering": false,
+            });
+        });
+        $(document).ready(function() {
+		    $('.js-mk').select2({
+                ajax: {
+                    url: '{!! url('/mata-kuliah/search') !!}',
+                    dataType: 'json',
+                    delay: 300,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.kode_mk+"-"+item.nama_mk+" "+item.hari,
+                                    id: item.id_jadwal
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+            	}
+            });
+		    $('.js-mahasiswa').select2({
+                ajax: {
+                    url: '{!! url('/mahasiswa/search') !!}',
+                    dataType: 'json',
+                    delay: 300,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.nrp+"-"+item.nama_mhs,
+                                    id: item.nrp
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+            	}
+            });
+		});
+    </script>
+@endsection
 <style>
 #list {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
