@@ -62,7 +62,7 @@ class AmbilKuliahController extends Controller
     	$ambil->nrp = $r->mhs;
     	$ambil->jadwal_id = $r->mk;
     	$ambil->save();
-        for($i=1;$i<=16;$i++)
+        /*for($i=1;$i<=16;$i++)
         {
             $hdr=new Kehadiran;
             $hdr->ambil_mk_id=$ambil->id;
@@ -72,7 +72,7 @@ class AmbilKuliahController extends Controller
             $hdr->catatan='';
             $hdr->pertemuan_ke=$i;
             $hdr->save();
-        }
+        }*/
     	return redirect()->action('AmbilKuliahController@index');
     }
 
