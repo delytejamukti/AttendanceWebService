@@ -21,18 +21,10 @@
         </select>
 
 		<div class="mt-2"></div>
-        {{Form::label('hari','Hari')}}
-        {{Form::text('hari', '')}}
-
-        {{Form::label('tahun_ajaran','Tahun Ajaran')}}
-        {{Form::text('tahun_ajaran', '')}}
-
         <h3 class="block-title">Tanggal Jadwal</h3>
         <input type="date" name="tanggal" required class="form-control" required>
         <h3 class="block-title">Pertemuan Ke-</h3>
         <input type="number" name="pertemuan" required class="form-control" min="1" max="16" required>
-
-
         <br>
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
