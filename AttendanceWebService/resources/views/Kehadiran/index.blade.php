@@ -39,10 +39,12 @@
 				<th>Nama Mahasiswa</th>
 				<th>Mata Kuliah</th>
 				<th>Tanggal</th>
-				<th>Kehadiran</th>
+                <th>Kehadiran</th>
+                <th>Catatan</th>
 				<th>Pertemuan ke-</th>
 				<th>Status Kelas</th>
-				<th>Aksi</th>
+                <th>Aksi</th>
+                <th>Edit Catatan</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -72,7 +74,8 @@
 							@else
 								<span class="btn-success">Masuk</span>
 							@endif
-						</td>
+                        </td>
+                        <td>{{$hadir->catatan}}</td>
 						<td>{{$hadir->pertemuan_ke}}</td>
 						<td>
 							@if($hadir->default==0)
@@ -82,8 +85,14 @@
 							@endif
 						</td>
 						<td>
-							<a href="{{url('/kehadiran/edit/'.$hadir->id)}}">	<button class="btn btn-primary">Edit Status</button></a>
-						</td>
+                            @if($hadir->hadir==0)
+								<a href="{{url('/kehadiran/edit/kehadiran/'.$hadir->id)}}">	<button class="btn btn-success">Hadir</button></a>
+							@else
+								<a href="{{url('/kehadiran/edit/kehadiran/'.$hadir->id)}}">	<button class="btn btn-danger">Tidak Hadir</button></a>
+							@endif
+
+                        </td>
+                        <td><a href="{{url('/kehadiran/edit/'.$hadir->id)}}">	<button class="btn btn-primary">Edit Catatan</button></a></td>
 					</tr>
 				@endforeach
 			@endif
