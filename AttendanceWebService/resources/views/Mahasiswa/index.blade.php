@@ -29,6 +29,7 @@
 						<th>#</th>
 						<th>NRP</th>
 						<th>Nama Mahasiswa</th>
+						<th>Angkatan</th>
 						<th>action</th>
 						</tr>
 					</thead>
@@ -38,6 +39,7 @@
 							<td>{{ $key+1}}</td>
 							<td> {{ $mhs -> nrp}}</td>
 							<td> {{ $mhs -> nama_mhs}}</td>
+							<td> {{ $mhs -> angkatan}}</td>
 							<td> <a href="{{ url('/mahasiswa/delete/'.$mhs->nrp) }}" class="btn btn-danger">Delete</a>
 								<a href="{{ url('/mahasiswa/'.$mhs->nrp.'/edit/')}}" class=" btn btn-primary">Edit</a></td>
 						</tr>

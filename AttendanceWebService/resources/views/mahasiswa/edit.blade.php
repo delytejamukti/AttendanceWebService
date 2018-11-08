@@ -34,6 +34,12 @@
                   <input type="text" class="form-control" id="nama_mhs" placeholder="Masukan Nama Mahasiswa" name="nama_mhs" value="{{ $mahasiswa->nama_mhs }}">
                 </div>
               </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2">Angkatan</label>
+                <div class="col-sm-10">          
+                  <input type="text" class="form-control" id="angkatan" placeholder="Masukan Angkatan" name="angkatan" value="{{ $mahasiswa->angkatan }}">
+                </div>
+              </div>
 
               <div class="form-group">        
                 <div class="col-sm-offset-2 col-sm-10">
