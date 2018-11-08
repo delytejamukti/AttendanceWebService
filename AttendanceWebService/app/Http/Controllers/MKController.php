@@ -46,4 +46,29 @@ class MKController extends Controller
             ->where('kode_mk', $id)->delete();
         return redirect()->action('MKController@index');
     }
+
+    public function searching(Request $request)
+    {
+        $data = [];
+        if ($request->has('q')) {
+            $search = $request->q;
+
+            $mata_kuliah=DB::table("mata_kuliahs")->where('nama_mk', 'LIKE', "%$search%")->get();
+            foreach ($mata_kuliah as $mk) {
+                $jadwal=DB::table("jadwals")->where("mk_kode",$mk->kode_mk)->get();
+                if($jadwal!=null)
+                {
+                    foreach ($jadwal as $jdw) 
+                    {
+                        $jadwalbaru['kode_mk']=$mk->kode_mk;
+                        $jadwalbaru['nama_mk']=$mk->nama_mk;
+                        $jadwalbaru['id_jadwal']=$jdw->id;
+                        $jadwalbaru['hari']=$jdw->hari;
+                        array_push($data,$jadwalbaru);
+                    }
+                }
+            }
+        }
+        return response()->json($data);
+    }
 }

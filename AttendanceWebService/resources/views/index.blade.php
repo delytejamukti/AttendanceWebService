@@ -60,7 +60,7 @@
         </a>
     </div>
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" style="text-decoration: none;" href="">
+        <a class="block block-transparent" style="text-decoration: none;" href="{{url('/kehadiran')}}">
             <div class="block-content block-content-full bg-corporate text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-list text-corporate-lighter"></i>

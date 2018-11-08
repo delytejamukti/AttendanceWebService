@@ -64,4 +64,15 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
         return redirect('/mahasiswa') -> with('sukses', 'Data dosen berhasil di hapus :)');
     }
+
+    public function search(Request $request)
+    {
+        $data = [];
+        if ($request->has('q')) {
+            $search = $request->q;
+
+            $data=Mahasiswa::where('nama_mhs', 'LIKE', "%$search%")->get();
+        }
+        return response()->json($data);
+    }
 }
