@@ -15,7 +15,7 @@ class KehadiranController extends Controller
 
     public function index()
     {
-    	$kehadiran=Kehadiran::where("tanggal","<=",Carbon::now())->get();
+        $kehadiran=Kehadiran::where("tanggal","<=",Carbon::now())->get();
     	return view('Kehadiran.index',compact('kehadiran'));
     }
 

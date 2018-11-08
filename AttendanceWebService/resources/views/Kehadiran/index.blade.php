@@ -22,6 +22,7 @@
                 <option name="ambilmk" value="{{$mk->id}}">{{$mhs->nrp}} | {{$mhs->nama_mhs}} | {{$mk->nama_mk}}</option>
             @endforeach
         </select>
+		<div class="mt-2"></div>
         {{Form::label('hari','Hari')}}
         {{Form::text('hari', '')}}
 
