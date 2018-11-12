@@ -14,6 +14,7 @@
 	<h3 class="block-title">Cari Mahasiswa</h3>
 	<select class="js-mahasiswa form-control" style="width: 92%;" name="mhs" data-placeholder="Cari Mahasiswa">
 	</select>
+    <div class="mt-2"></div>
 	<button type="submit" class="btn btn-success">Simpan</button>
 </form>
 
