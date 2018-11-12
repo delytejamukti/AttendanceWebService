@@ -21,12 +21,13 @@ class KehadiranController extends Controller
     }
 
     public function create(Request $request)
-    {
+    {  
         $ambil=AmbilKuliah::where('jadwal_id',$request->mk)->get();
+        
         foreach($ambil as $am)
         {
-            $hadir=Kehadiran::where('ambil_mk_id',$am->id)->
-            where(function($q)use($request){$q->where('pertemuan_ke',$request->pertemuan)->orwhere('tanggal',$request->tanggal);})->get();
+            $hadir=Kehadiran::where('ambil_mk_id',$am->id)->where(function($q)use($request){$q->where('pertemuan_ke',$request->pertemuan)->orwhere('tanggal',$request->tanggal);})->get();
+            
             if(count($hadir)==0)
             {
                 $hdr=new Kehadiran;
