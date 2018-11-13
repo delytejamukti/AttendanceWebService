@@ -15,12 +15,10 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/index', function () {
-    return view('index');
-});
 
 Route::get('/mahasiswa', 'MahasiswaController@read')->name('mhs');
-Route::get('/mahasiswa/create', 'MahasiswaController@create');
+Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.add');
+Route::get('/mahasiswa/search', 'MahasiswaController@search');
 Route::post('/mahasiswa/store', 'MahasiswaController@store');
 Route::get('/mahasiswa/{nrp}/edit', 'MahasiswaController@edit');
 Route::post('/mahasiswa/{nrp}', 'MahasiswaController@update');
@@ -36,6 +34,7 @@ Route::get('/dosen/delete/{nip}', 'DosenController@destroy');
 Route::group(['prefix' => 'mata-kuliah'], function(){
     Route::get('/', 'MKController@index')->name('mk');
     Route::get('/create', 'MKController@create')->name('mk.add');
+    Route::get('/search','MKController@searching');
     Route::post('/create/submit','MKController@create_submit');
     Route::get('/edit/{id}', 'MKController@edit');
     Route::put('/edit/submit','MKController@edit_submit');
@@ -61,7 +60,17 @@ Route::group(['prefix' => 'ambil_kuliah'], function(){
     });
 });
 
+Route::group(['prefix'=> 'kehadiran','middleware' => ['auth']], function () {
+    Route::get('/','KehadiranController@index');
+    Route::post('/create', 'KehadiranController@create');
+    Route::get('/edit/{id}','KehadiranController@edit');
+    Route::post('/edit/submit', 'KehadiranController@edit_submit');
+    Route::get('/edit/kehadiran/{id}','KehadiranController@kehadiran');
+});
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/gpassword',function(){
+    return bcrypt('123');
+});

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AmbilKuliah;
+use App\Kehadiran;
+use Carbon\Carbon;
 use DB;
 
 class AmbilKuliahController extends Controller
@@ -55,11 +57,22 @@ class AmbilKuliahController extends Controller
     	return view('/ambil_kuliah/peserta_angkatan', $data);
     }
 
-    public function tambah(){
+    public function tambah(Request $r){
     	$ambil = new AmbilKuliah;
-    	$ambil->nrp = request('mhs_nrp');
-    	$ambil->jadwal_id = request('jadwal');
+    	$ambil->nrp = $r->mhs;
+    	$ambil->jadwal_id = $r->mk;
     	$ambil->save();
+        /*for($i=1;$i<=16;$i++)
+        {
+            $hdr=new Kehadiran;
+            $hdr->ambil_mk_id=$ambil->id;
+            $hdr->tanggal=Carbon::now();
+            $hdr->hadir=0;
+            $hdr->default=0;
+            $hdr->catatan='';
+            $hdr->pertemuan_ke=$i;
+            $hdr->save();
+        }*/
     	return redirect()->action('AmbilKuliahController@index');
     }
 
