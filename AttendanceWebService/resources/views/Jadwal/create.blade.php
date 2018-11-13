@@ -31,6 +31,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{Form::label('kelas','Kelas', ['class' => 'control-label col-sm-2'])}}
+                    <div class="col-sm-10">
+                        {{Form::text('kelas', '', ['class' => 'form-control'])}}
+                    </div>
+                </div>
+                <div class="form-group">
                     {{Form::label('hari','Hari', ['class' => 'control-label col-sm-2'])}}
                     <div class="col-sm-10">
                         {{Form::text('hari', '', ['class' => 'form-control'])}}

@@ -17,6 +17,7 @@ class CreateJadwalsTable extends Migration
             $table->increments('id');
             $table->string('dosen_nip');
             $table->string('mk_kode');
+            $table->string('kelas');
             $table->string('hari');
             $table->integer('tahun_ajaran');
             $table->timestamps();

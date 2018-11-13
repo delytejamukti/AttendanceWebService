@@ -27,6 +27,7 @@
                         <tr>
                             <th>Dosen</th>
                             <th>Mata Kuliah</th>
+                            <th>Kelas</th>
                             <th>Hari</th>
                             <th>Tahun Ajaran</th>
                             <th>Aksi</th>
@@ -37,6 +38,7 @@
                         <tr>
                             <td>{{$row->nama_dosen}}</td>
                             <td>{{$row->nama_mk}}</td>
+                            <td>{{$row->kelas}}</td>
                             <td>{{$row->hari}}</td>
                             <td>{{$row->tahun_ajaran}}</td>
                             <td>
