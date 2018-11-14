@@ -20,6 +20,12 @@ class KehadiranController extends Controller
     	return view('Kehadiran.index',compact('kehadiran'));
     }
 
+    public function PrintIndex()
+    {
+        $kehadiran=Kehadiran::where("tanggal","<=",Carbon::now())->get();
+        return view('Kehadiran.print',compact('kehadiran'));
+    }
+
     public function create(Request $request)
     {  
         $ambil=AmbilKuliah::where('jadwal_id',$request->mk)->get();

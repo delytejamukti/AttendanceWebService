@@ -5,30 +5,7 @@
 @endsection
 
 @section('contents')
-    <h2>Tambah Kehadiran Kelas</h2>
-    <form method="POST" action="{{url('/kehadiran/create')}}">
-        {{csrf_field()}}
-        <h3 class="block-title">Cari Jadwal</h3>
-        <select class="js-mk form-control" style="width: 92%;" name="mk" data-placeholder="Cari Jadwal" required>
-            {{-- @foreach ($ambilMK as $mk)
-                @php
-                    $mhs=App\Mahasiswa::where('nrp',$mk->nrp)->first();
-                    $jadwal=App\Jadwal::find($mk->jadwal_id);
-                    $mk=App\MataKuliah::where('kode_mk',$jadwal->mk_kode)->first();
-                @endphp
-                <option name="ambilmk" value="{{$mk->id}}">{{$mhs->nrp}} | {{$mhs->nama_mhs}} | {{$mk->nama_mk}}</option>
-            @endforeach --}}
-        </select>
-
-		<div class="mt-2"></div>
-        <h3 class="block-title">Tanggal Jadwal</h3>
-        <input type="date" name="tanggal" required class="form-control" required>
-        <h3 class="block-title">Pertemuan Ke-</h3>
-        <input type="number" name="pertemuan" required class="form-control" min="1" max="16" required>
-        <br>
-        <button type="submit" class="btn btn-success">Simpan</button>
-        <a class="btn btn-primary" href="{{ url('kehadiran/print') }}">Print</a>
-    </form>
+    <h2>Kehadiran Kelas</h2>
     <br>
 	<table id="list">
 		<thead>
@@ -43,7 +20,6 @@
 				<th>Pertemuan ke-</th>
 				<th>Status Kelas</th>
                 <th>Aksi</th>
-                <th>Edit Catatan</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -91,7 +67,6 @@
 							@endif
 
                         </td>
-                        <td><a href="{{url('/kehadiran/edit/'.$hadir->id)}}">	<button class="btn btn-primary">Edit Catatan</button></a></td>
 					</tr>
 				@endforeach
 			@endif
@@ -107,45 +82,18 @@
             $('#list').DataTable({
                 "autoWidth": true,
                 "ordering": false,
+                "bPaginate": false,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bInfo": false,
+                "bAutoWidth": false
             });
         });
-        $(document).ready(function() {
-		    $('.js-mk').select2({
-                ajax: {
-                    url: '{!! url('/mata-kuliah/search') !!}',
-                    dataType: 'json',
-                    delay: 300,
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    text: item.kode_mk+"-"+item.nama_mk+" "+item.hari,
-                                    id: item.id_jadwal
-                                }
-                            })
-                        };
-                    },
-                    cache: true
-            	}
-            });
-		    $('.js-mahasiswa').select2({
-                ajax: {
-                    url: '{!! url('/mahasiswa/search') !!}',
-                    dataType: 'json',
-                    delay: 300,
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    text: item.nrp+"-"+item.nama_mhs,
-                                    id: item.nrp
-                                }
-                            })
-                        };
-                    }
-            	}
-            });
-		});
+
+        
+        $(document).ready(function(){
+            window.print();
+        });
     </script>
 @endsection
 <style>

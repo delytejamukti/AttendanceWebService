@@ -62,6 +62,7 @@ Route::group(['prefix' => 'ambil_kuliah'], function(){
 
 Route::group(['prefix'=> 'kehadiran','middleware' => ['auth']], function () {
     Route::get('/','KehadiranController@index');
+    Route::get('/print','KehadiranController@PrintIndex');
     Route::post('/create', 'KehadiranController@create');
     Route::get('/edit/{id}','KehadiranController@edit');
     Route::post('/edit/submit', 'KehadiranController@edit_submit');
