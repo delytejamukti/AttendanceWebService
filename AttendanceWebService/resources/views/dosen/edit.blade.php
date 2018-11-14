@@ -5,30 +5,43 @@
 @endsection
 
 @section('contents')
+<div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Edit Dosen</h1>
+                <hr class="col-md-12">
+            </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: #013880;color: white;">
+              <i class="fa fa-user fa-fw"></i><b>Edit Dosen</b>
+          </div>
 
-<form class="form-horizontal" action={{url('/dosen/'.$dosen->nip)}} method="POST" >
+          <div class="panel-body border border-primary">
+            <form class="form-horizontal" action={{url('/dosen/'.$dosen->nip)}} method="POST" >
+                {{ csrf_field() }}
+                <div class="form-group">
+                  <label class="control-label col-sm-2">NIP</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nip" placeholder="Masukan NIP" name="nip" value="{{$dosen->nip}}" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2">Nama Dosen</label>
+                  <div class="col-sm-10">          
+                <input type="text" class="form-control" id="nama_dosen" placeholder="Masukan Nama Dosen" name="nama_dosen" value="{{$dosen->nama_dosen}}">
+                  </div>
+                </div>
 
-    {{ csrf_field() }}
-    <div class="form-group">
-      <label class="control-label col-sm-2">NIP</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="nip" placeholder="Masukan NIP" name="nip" value="{{$dosen->nip}}" disabled>
-      </div>
+                <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2">Nama Dosen</label>
-      <div class="col-sm-10">          
-    <input type="text" class="form-control" id="nama_dosen" placeholder="Masukan Nama Dosen" name="nama_dosen" value="{{$dosen->nama_dosen}}">
-      </div>
-    </div>
-
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-</form>
-
+</div>
 @endsection
 
 

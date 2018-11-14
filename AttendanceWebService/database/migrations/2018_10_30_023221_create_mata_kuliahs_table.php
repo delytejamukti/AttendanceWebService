@@ -14,14 +14,9 @@ class CreateMataKuliahsTable extends Migration
     public function up()
     {
         Schema::create('mata_kuliahs', function (Blueprint $table) {
-<<<<<<< HEAD
-            //$table->increments('id');
-            $table-> String('nrp');
-            $table-> String('nama_mahasiswa');
-=======
+
             $table->string('kode_mk')->primary();
             $table->string('nama_mk');
->>>>>>> e5bcb9d737392d484702e9ad9feb8c7a55551b2b
             $table->timestamps();
         });
     }

@@ -7,7 +7,10 @@ use App\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function create()
     {
     	return view('mahasiswa.create');
@@ -23,21 +26,21 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::find($nrp);
         $mahasiswa->nama_mhs = $request->nama_mhs;
+        $mahasiswa->angkatan = (int)$request->angkatan;
 
         if ($mahasiswa->save())
         {
-            return redirect('/mahasiswa')-> with('sukses', 'Data dosen berhasil disimpan :)');
+            return redirect('/mahasiswa')-> with('sukses', 'Data mahasiswa Berhasil disimpan');
         }
         else
         {
-            return redirect('/mahasiswa/'.$nrp.'/edit')->withErrors(['gagal disimpen cok! :('])->withInput();
+            return redirect('/mahasiswa/'.$nrp.'/edit')->withErrors(['Data mahasiswa Gagal disimpan'])->withInput();
         }
     }
 
     public function edit($mhs)
     {
     	$data['mahasiswa'] = Mahasiswa::find($mhs);
-        //var_dump($data);
         return view('mahasiswa.edit', $data);
     }
 
@@ -46,6 +49,7 @@ class MahasiswaController extends Controller
         $mahasiswa = new Mahasiswa;
         $mahasiswa->nrp = $request->nrp;
         $mahasiswa->nama_mhs = $request->nama_mhs;
+        $mahasiswa->angkatan = (int)$request->angkatan;
         $mahasiswa->save();
 
         return redirect('/mahasiswa');
@@ -59,6 +63,17 @@ class MahasiswaController extends Controller
             return abort(404);
         }
         $mahasiswa->delete();
-        return redirect('/mahasiswa') -> with('sukses', 'Data dosen berhasil di hapus :)');
+        return redirect('/mahasiswa') -> with('sukses', 'Data Mahasiswa berhasil di hapus :)');
+    }
+
+    public function search(Request $request)
+    {
+        $data = [];
+        if ($request->has('q')) {
+            $search = $request->q;
+
+            $data=Mahasiswa::where('nama_mhs', 'LIKE', "%$search%")->get();
+        }
+        return response()->json($data);
     }
 }

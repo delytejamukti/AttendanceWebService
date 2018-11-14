@@ -7,7 +7,10 @@ use App\Dosen;
 
 class DosenController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function read()
     {
     	$dosen = Dosen::all();
@@ -45,10 +48,10 @@ class DosenController extends Controller
 
         if ($dosen->save()) {
 
-        	return redirect('/dosen')-> with('sukses', 'Data Dosen berhasil disimpan)');
+        	return redirect('/dosen')-> with('sukses', 'Data Dosen berhasil disimpan');
         }
         else {
-        	return redirect('/dosen'.$nip.'/edit')->withErrors(['gagal disimpen cok! :('])->withInput();
+        	return redirect('/dosen'.$nip.'/edit')->withErrors(['Data Dosen gagal disimpan'])->withInput();
         
         }
      }

@@ -1,47 +1,43 @@
 @extends('layouts.main')
 
 @section('title')
-    Jadwal
+    Mata Kuliah
 @endsection
 
 @section('contents')
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header text-center">Data Jadwal</h1>
+            <h1 class="page-header text-center">Data Mata Kuliah</h1>
             <hr class="col-md-12">
-            <a href="{{route('jadwal.add')}}">
-                <button type="button" class="btn btn-primary" name="button" style="margin-bottom: 20px">Tambah Jadwal</button>
+            <a href="{{route('mk.add')}}">
+                <button type="button" class="btn btn-primary" name="button" style="margin-bottom: 20px">Tambah Mata Kuliah</button>
             </a>
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading" style="background-color: #013880;color: white;">
-                <i class="fa fa-user fa-fw"></i><b>Jadwal
-            </b>
-        </div>
-        <div class="panel-body">
-            <div class="table table-responsive">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="background-color: #013880;color: white;">
+				<i class="fa fa-user fa-fw"></i><b>Mata Kuliah
+			</b>
+		</div>
+		<div class="panel-body">
+			<div class="table table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Dosen</th>
-                            <th>Mata Kuliah</th>
-                            <th>Hari</th>
-                            <th>Tahun Ajaran</th>
+                            <th>Kode Mata Kuliah</th>
+                            <th>Nama Mata Kuliah</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($rows as $row)
                         <tr>
-                            <td>{{$row->nama_dosen}}</td>
+                            <td>{{$row->kode_mk}}</td>
                             <td>{{$row->nama_mk}}</td>
-                            <td>{{$row->hari}}</td>
-                            <td>{{$row->tahun_ajaran}}</td>
                             <td>
-                                {{ Form::open(['route' => ['jadwal.delete', $row->id], 'method' => 'delete']) }}
-                                    <a href="/jadwal/edit/{{$row->id}}">
+                                {{ Form::open(['route' => ['matakuliah.delete', $row->kode_mk], 'method' => 'delete']) }}
+                                    <a href="/mata-kuliah/edit/{{$row->kode_mk}}">
                                         <button type="button" class="btn btn-primary">edit</button>
                                     </a>
                                     <button type="submit" class="btn btn-danger">hapus</button>

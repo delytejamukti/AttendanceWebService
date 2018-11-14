@@ -10,34 +10,67 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/mahasiswa', 'MahasiswaController@read');
-Route::get('/mahasiswa/create', 'MahasiswaController@create');
+Route::get('/mahasiswa', 'MahasiswaController@read')->name('mhs');
+Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.add');
+Route::get('/mahasiswa/search', 'MahasiswaController@search');
 Route::post('/mahasiswa/store', 'MahasiswaController@store');
 Route::get('/mahasiswa/{nrp}/edit', 'MahasiswaController@edit');
 Route::post('/mahasiswa/{nrp}', 'MahasiswaController@update');
 Route::get('/mahasiswa/delete/{nrp}', 'MahasiswaController@destroy');
 
-Route::get('/dosen', 'DosenController@read');
-Route::get('/dosen/create', 'DosenController@create');
+Route::get('/dosen', 'DosenController@read')->name('dosen');
+Route::get('/dosen/create', 'DosenController@create')->name('dosen.add');
 Route::post('/dosen/store', 'DosenController@store');
 Route::get('/dosen/{nip}/edit', 'DosenController@edit');
 Route::post('/dosen/{nip}', 'DosenController@update');
 Route::get('/dosen/delete/{nip}', 'DosenController@destroy');
 
 Route::group(['prefix' => 'mata-kuliah'], function(){
-    Route::get('/', 'MKController@home');
-    Route::get('/create', 'MKController@create');
+    Route::get('/', 'MKController@index')->name('mk');
+    Route::get('/create', 'MKController@create')->name('mk.add');
+    Route::get('/search','MKController@searching');
     Route::post('/create/submit','MKController@create_submit');
     Route::get('/edit/{id}', 'MKController@edit');
     Route::put('/edit/submit','MKController@edit_submit');
-    Route::get('/delete/{id}', 'MKController@delete')->name('supplier.delete');
+    Route::delete('/delete/{id}', 'MKController@delete')->name('matakuliah.delete');
 });
 
 Route::group(['prefix' => 'jadwal'], function(){
-    Route::get('/', 'JadwalController@home');
+    Route::get('/', 'JadwalController@index')->name('jadwal');
+    Route::get('/create', 'JadwalController@create')->name('jadwal.add');
+    Route::post('/create/submit','JadwalController@create_submit');
+    Route::get('/edit/{id}', 'JadwalController@edit');
+    Route::put('/edit/submit','JadwalController@edit_submit');
+    Route::delete('/delete/{id}', 'JadwalController@delete')->name('jadwal.delete');
+});
+
+Route::group(['prefix' => 'ambil_kuliah'], function(){
+    Route::get('/', 'AmbilKuliahController@index')->name('ambil_mk');
+    Route::group(['prefix' => 'peserta'], function(){
+        Route::post('/', 'AmbilKuliahController@peserta');
+        Route::post('/angkatan', 'AmbilKuliahController@angkatan');
+        Route::post('/delete', 'AmbilKuliahController@delete');
+        Route::post('/tambah', 'AmbilKuliahController@tambah');
+    });
+});
+
+Route::group(['prefix'=> 'kehadiran','middleware' => ['auth']], function () {
+    Route::get('/','KehadiranController@index');
+    Route::post('/create', 'KehadiranController@create');
+    Route::get('/edit/{id}','KehadiranController@edit');
+    Route::post('/edit/submit', 'KehadiranController@edit_submit');
+    Route::get('/edit/kehadiran/{id}','KehadiranController@kehadiran');
+});
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/gpassword',function(){
+    return bcrypt('123');
 });
