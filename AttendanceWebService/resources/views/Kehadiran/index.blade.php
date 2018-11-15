@@ -27,6 +27,7 @@
         <input type="number" name="pertemuan" required class="form-control" min="1" max="16" required>
         <br>
         <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="/versicetak" type="submit" class="btn btn-light" style="float: right">Versi Cetak</a>
     </form>
     <br>
 	<table id="list">
