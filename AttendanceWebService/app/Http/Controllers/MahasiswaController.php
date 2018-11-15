@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mahasiswa;
+use App\Imports\MahasiswaImport;
+use Excel;
+
+
 
 class MahasiswaController extends Controller
 {
@@ -20,6 +24,37 @@ class MahasiswaController extends Controller
     {
         $mhs = Mahasiswa::all();
     	return view ('mahasiswa.index', compact('mhs'));
+    }
+
+    public function import(Request $request) 
+    {
+        //dd(Excel::import(new MahasiswaImport, 'Mahasiswa.xlsx');
+        $this->validate($request, [
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file'); //GET FILE
+            Excel::import(new MahasiswaImport, $file); //IMPORT FILE 
+            return redirect('/mahasiswa')->with('success', 'All good!');
+        }  
+        //Excel::import(new MahasiswaImport, request()->file('file'));
+        return redirect('/')->with('success', 'All good!');
+
+        // if($request->hasFile('file')){
+        //     $path = $request->file('file')->getRealPath();
+        //     //$data = Excel::load($path, function($reader){})->get();
+        //     if(!empty($data) && $data->count()){
+        //         foreach($data as $key=>$val){
+        //            $mahasiswa = new Mahasiswa;
+        //            $mahasiswa->nrp = $val->nrp;
+        //            $mahasiswa->nama_mhs = $val->nama_mhs;
+        //            $mahasiswa->angkatan = $val->angkatan;
+        //            $mahasiswa->save();
+        //         }
+        //     }
+        // }
+        //return back();
     }
     
     public function update(Request $request, $nrp)
@@ -76,4 +111,5 @@ class MahasiswaController extends Controller
         }
         return response()->json($data);
     }
+
 }
