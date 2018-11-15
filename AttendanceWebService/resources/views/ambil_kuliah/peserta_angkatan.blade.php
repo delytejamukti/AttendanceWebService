@@ -7,6 +7,7 @@
 @section('contents')
 
 <strong style="font-size: 14pt"><center>Angkatan {{$angkatan}}</center></strong>
+{!! Form::open(['action' => 'AmbilKuliahController@tambah', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
 <table id="list">
 <thead>
 	<tr>
@@ -14,28 +15,27 @@
 		<th>NRP</th>
 		<th>Nama</th>
 		<th>Angkatan</th>
-		<th>Aksi</th>
+		<th>Pilih</th>
 	</tr>
 </thead>
 <tbody>
 	@foreach($mhs as $p)
 	<tr>
-		<td>{{$c++}}</td>
+		<td>{{$c}}</td>
 		<td>{{$p->nrp}}</td>
 		<td>{{$p->nama_mhs}}</td>
 		<td>{{$p->angkatan}}</td>
 		<td>
-			{!! Form::open(['action' => 'AmbilKuliahController@tambah', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
-			<input type="hidden" name="mhs_nrp" value="{{$p->nrp}}">
-			<input type="hidden" name="jadwal" value="{{$jadwal}}">
-			<center>{!! Form::submit('Tambah',['class' => 'btn btn-primary']) !!}</center>
-			{!! Form::close() !!}
+			<input type="checkbox" name="nrp{{$c++}}" value="{{$p->nrp}}">
 		</td>
 	</tr>
 	@endforeach
 </tbody>
 </table>
-
+	<input type="hidden" name="jumlah" value="{{--$c}}">
+	<input type="hidden" name="mk" id="mk" value="{{$jadwal}}">
+<center><button type="submit" class="btn btn-success" >Tambah Mahasiswa</button> </center>
+{!! Form::close() !!}
 @endsection
 
 @section('moreJS')
@@ -47,6 +47,42 @@
                 "ordering": false,
             });
         });
+   //      function tambah(){
+			// // element = document.getElementById('jumlah');
+			// // if (element != null) {
+			// //     alert(document.getElementById("jumlah").value;
+			// // }
+			// // else {
+			// //     alert('kosong');
+			// // }
+        	
+   //      	var jml= document.getElementById('jumlah').value;
+   //      	var i=0;
+   //      	for(i=1;i<=jml;i++){
+   //      		if(document.getElementById('nrp'+i).checked==true){
+		 //        	var dnrp = document.getElementById('nrp'+i).value;
+		 //        	var dmk = document.getElementById('mk').value;
+		 //        	//alert(nrp+" "+mk);
+		 //        	$.ajax({
+		 //                    type:'post',
+		 //                    url: "{{url('/ambil_kuliah/peserta/tambah')}}",
+		 //                    data: { 
+		 //                    	nrp:dnrp,
+		 //                    	mk :dmk
+		 //                    },
+		 //                    error: function(xhr, status, error) {
+			// 				  var err = eval("(" + xhr.responseText + ")");
+			// 				  alert(err.Message);
+			// 				},
+		 //                    success: function(result){
+			//                     console.log(result);
+			//                 }
+
+
+		 //            });
+		 //        }
+   //      	}
+   //      }
     </script>
 @endsection
 

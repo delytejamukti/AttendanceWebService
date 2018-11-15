@@ -60,22 +60,16 @@ class AmbilKuliahController extends Controller
     }
 
     public function tambah(){
-
-    	$ambil = new AmbilKuliah;
-    	$ambil->nrp = request('nrp');
-    	$ambil->jadwal_id = request('mk');
-    	$ambil->save();
-        /*for($i=1;$i<=16;$i++)
-        {
-            $hdr=new Kehadiran;
-            $hdr->ambil_mk_id=$ambil->id;
-            $hdr->tanggal=Carbon::now();
-            $hdr->hadir=0;
-            $hdr->default=0;
-            $hdr->catatan='';
-            $hdr->pertemuan_ke=$i;
-            $hdr->save();
-        }*/
+        for($i=1; $i<=request('jumlah'); $i++){
+            if(request('nrp'.$i)==null) continue;
+            else {
+                $ambil = new AmbilKuliah;
+                $ambil->nrp = request('nrp'.$i);
+                $ambil->jadwal_id = request('mk');
+                $ambil->save();
+            }
+        }
+    	
     	return redirect()->action('AmbilKuliahController@index');
     }
 
