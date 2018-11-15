@@ -8,7 +8,7 @@ class Jadwal extends Model
 {
     protected $table = 'jadwals';
     
-    protected $fillable = ['dosen_nip', 'mk_kode', 'hari', 'tahun_ajaran'];
+    protected $fillable = ['dosen_nip', 'mk_kode', 'kelas', 'hari', 'tahun_ajaran'];
 
     public function matakuliah(){
     	return $this->belongsTo('App\MataKuliah');
