@@ -36,13 +36,18 @@
 </table>
 
 <div style="padding: 40px 0 0 0">
-	<strong style="font-size: 14pt">Tambah Siswa</strong>
 	{!! Form::open(['action' => 'AmbilKuliahController@angkatan', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
-	{!! Form::label('angkatan', 'Angkatan', ['style' => 'font-size:12pt']) !!}
-	{!! Form::select('angkatan', [2013 => 2013, 2014 => 2014, 2015 => 2015, 2016 => 2016, 2017 => 2017, 2018 => 2018, 2019 => 2019])!!}
-	<input type="hidden" name="jadwal" value="{{$jadwal}}"> 
-	{!! Form::submit('Pilih',['class' => 'btn btn-primary']) !!}
+		<strong style="font-size: 14pt">Tambah Siswa</strong><br>
+		<label style="font-size: 12pt">Angkatan</label>
+		<select name="angkatan" id="angkatan">
+			@foreach($angk as $a)
+			<option value="{{$a->angkatan}}">{{$a->angkatan}}</option>
+			@endforeach
+		</select>
+		<input type="hidden" name="jadwal" value="{{$jadwal}}"> 
+		<button type="submit" class="btn btn-primary">Pilih</button>
 	{!! Form::close() !!}
+
 </div>
 
 @endsection

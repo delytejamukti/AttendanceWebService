@@ -68,7 +68,7 @@ Route::group(['prefix'=> 'kehadiran','middleware' => ['auth']], function () {
     Route::get('/edit/kehadiran/{id}','KehadiranController@kehadiran');
 });
 
-
+Route::get('/versicetak','KehadiranController@indexPrint');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/gpassword',function(){
