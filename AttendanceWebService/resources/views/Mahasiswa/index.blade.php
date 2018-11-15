@@ -7,15 +7,44 @@
 @section('contents')
 
 <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-				<h1 class="page-header text-center">Data Mahasiswa</h1>
-				<hr class="col-md-12">
-				<a href="{{route('mahasiswa.add')}}">
-                	<button type="button" class="btn btn-primary" name="button" style="margin-bottom: 20px">Tambah Mahasiswa</button>
-				</a>
+    <div class="row">
+        <div class="col-lg-12">
+			<h1 class="page-header text-center">Data Mahasiswa</h1>
+			<hr class="col-md-12">
+			<a href="{{route('mahasiswa.add')}}">
+               	<button type="button" class="btn btn-primary" name="button" style="margin-bottom: 20px">Tambah Mahasiswa</button>
+			</a>
+		</div>
+    </div>
+
+
+    <div class="panel-heading">
+		<i class="fa fa-user fa-fw"></i><b>Import Data Mahasiswa
+		</b>
+		<form method="post" action="/mahasiswa/import" enctype="multipart/form-data" >
+			@csrf
+			<div class="form-group">
+                <label for="">File (.xls, .xlsx)</label>
+                <input type="file" class="form-control" name="file">
+                <p class="text-danger">{{ $errors->first('file') }}</p>
+            </div>
+            
+            <div class="form-group">
+                <button class="btn btn-primary">Import Data Mahasiswa</button>
+            </div>
+
+			{{-- <div class="form-group">
+			    <input type="file" class="form-control-file" id="file" name="file">
 			</div>
-        </div>
+			<a href="{{ url('/mahasiswa/import')}}" class=" btn btn-primary" style="margin-bottom: 20px">Import Data Mahasiswa</a>
+			<div class="form-group">        
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button class="btn btn-primary">Import</button>
+                </div>
+              </div> --}}
+		</form>
+	</div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading" style="background-color: #013880;color: white;">
 				<i class="fa fa-user fa-fw"></i><b>Mahasiswa

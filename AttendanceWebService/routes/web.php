@@ -21,8 +21,10 @@ Route::get('/mahasiswa/create', 'MahasiswaController@create')->name('mahasiswa.a
 Route::get('/mahasiswa/search', 'MahasiswaController@search');
 Route::post('/mahasiswa/store', 'MahasiswaController@store');
 Route::get('/mahasiswa/{nrp}/edit', 'MahasiswaController@edit');
+Route::post('/mahasiswa/import', 'MahasiswaController@import');
 Route::post('/mahasiswa/{nrp}', 'MahasiswaController@update');
 Route::get('/mahasiswa/delete/{nrp}', 'MahasiswaController@destroy');
+
 
 Route::get('/dosen', 'DosenController@read')->name('dosen');
 Route::get('/dosen/create', 'DosenController@create')->name('dosen.add');
