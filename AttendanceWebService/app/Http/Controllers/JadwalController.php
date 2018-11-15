@@ -36,6 +36,7 @@ class JadwalController extends Controller
         Jadwal::create([
             'dosen_nip' => $request->dosen_nip,
             'mk_kode' => $request->mk_kode,
+            'kelas' => $request->kelas,
             'hari' => $request->hari,
             'tahun_ajaran' => $request->tahun_ajaran,
         ]);
@@ -54,6 +55,7 @@ class JadwalController extends Controller
         Jadwal::whereId($request->id)->update([
             'dosen_nip' => $request->dosen_nip,
             'mk_kode' => $request->mk_kode,
+            'kelas' => $request->kelas,
             'hari' => $request->hari,
             'tahun_ajaran' => $request->tahun_ajaran,
         ]);
