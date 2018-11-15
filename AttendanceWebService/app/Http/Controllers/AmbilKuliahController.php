@@ -33,6 +33,8 @@ class AmbilKuliahController extends Controller
     				->join('mahasiswas', 'mahasiswas.nrp', '=', 'ambil_kuliahs.nrp')
     				->get();
     	$data['c'] = 1;
+        $data['angk'] = DB::table('mahasiswas')
+                    ->select('angkatan')->distinct()->get();
     	return view('/ambil_kuliah/peserta_index', $data);	
     }
 
@@ -57,10 +59,11 @@ class AmbilKuliahController extends Controller
     	return view('/ambil_kuliah/peserta_angkatan', $data);
     }
 
-    public function tambah(Request $r){
+    public function tambah(){
+
     	$ambil = new AmbilKuliah;
-    	$ambil->nrp = $r->mhs;
-    	$ambil->jadwal_id = $r->mk;
+    	$ambil->nrp = request('nrp');
+    	$ambil->jadwal_id = request('mk');
     	$ambil->save();
         /*for($i=1;$i<=16;$i++)
         {
